@@ -1,28 +1,19 @@
+{{-- smileys/index.blade.php --}}
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page de smileys</title>
+    <!-- Bootstrap CSS (facultatif, pour une meilleure apparence) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
+        * {
             font-family: 'Noto Color Emoji', sans-serif;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .pagination {
-            margin-top: 20px;
-            text-align: center;
-        }
-        footer {
-            margin-top: 20px;
-            text-align: center;
         }
     </style>
 </head>
@@ -31,36 +22,18 @@
 <div class="container">
     <h1>Page de smileys</h1>
 
-    <?php
-    // Nombre de caractères par page
-    $caracteres_par_page = 256;
-
-    // Code de départ pour les smileys UTF-8
-    $code_de_depart = 128512;
-
-    // Afficher les caractères UTF-8
-    for ($i = 0; $i < $caracteres_par_page; $i++) {
-        // Afficher chaque caractère avec son code HTML
-        $code = $code_de_depart + $i;
-        echo '&#' . $code . '; ';
-
-        // Insérer un saut de ligne après chaque 16 caractères pour former une grille
-        if (($i + 1) % 16 == 0) {
-            echo '<br>';
-        }
-    }
-    ?>
-
-    <!-- Pagination -->
-    <div class="pagination">
-        <!-- Laissez cette partie à Amine -->
+    <div class="row">
+        @foreach ($smileys as $smiley)
+            <div class="col-md-3">
+                <span style="font-size: 24px;">{!! $smiley !!};</span>
+            </div>
+        @endforeach
     </div>
-
-    <!-- Mentions légales -->
-    <footer>
-        <p>Mentions légales : Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </footer>
 </div>
 
+<!-- Bootstrap JavaScript (facultatif, pour une meilleure apparence) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
